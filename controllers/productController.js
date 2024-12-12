@@ -61,7 +61,7 @@ const createProduct = async (req, res) => {
 const updateProductById = async (req, res) => {
     try {
         const { id } = req.params;
-        const { productName, productDetail, price, amount } = req.body;
+        const { amount } = req.body;
 
         const product = await Product.findById(id);
         if (!product) {
@@ -69,13 +69,9 @@ const updateProductById = async (req, res) => {
         }
 
         const updateData = {
-            // productName: product.productName,
-            // productDetail: product.productDetail,
-            // price: Number(product.price),
             amount: Number(amount)
         };
 
-        // จัดการ path ของรูปภาพ
         if (req.file) {
             updateData.productImage = `images/${req.file.filename}`;
         }
