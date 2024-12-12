@@ -44,7 +44,6 @@ const createOrder = async (req, res) => {
     }
 };
 
-
 const getAllOrders = async (req, res) => {
     try {
         const orders = await Order.find().populate('items.product');
